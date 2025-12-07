@@ -5,7 +5,7 @@ interface Task {
     completed: boolean;
 }
 
-class SimpleTodo {
+class Todo {
     private tasks: Task[] = [];
     private nextId: number = 1;
 
@@ -38,11 +38,8 @@ class SimpleTodo {
 
     private addTask(): void {
         const text = this.taskInput.value.trim();
-        
-        if (!text) {
-            alert('Пожалуйста, введите текст задачи!');
-            return;
-        }
+
+        // Нет проверки, заполнено ли поле.
 
         const newTask: Task = {
             id: this.nextId++,
@@ -52,8 +49,10 @@ class SimpleTodo {
         };
 
         this.tasks.push(newTask);
-        this.taskInput.value = '';
-        this.urgentCheckbox.checked = false;
+        
+        // Не очищается поле задачи.
+        // Тогл срочности не выключается.
+        
         this.saveToStorage();
         this.renderTasks();
     }
@@ -67,7 +66,9 @@ class SimpleTodo {
     private toggleTask(id: number): void {
         const task = this.tasks.find(task => task.id === id);
         if (task) {
-            task.completed = !task.completed;
+            // Можно переключить только в одну сторону. 
+            if (!task.completed)
+                task.completed = true;
             this.saveToStorage();
             this.renderTasks();
         }
@@ -121,24 +122,22 @@ class SimpleTodo {
     }
 
     private saveToStorage(): void {
-        localStorage.setItem('simpleTasks', JSON.stringify(this.tasks));
-        localStorage.setItem('simpleNextId', this.nextId.toString());
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        localStorage.setItem('nextId', this.nextId.toString());
     }
 
     private loadFromStorage(): void {
-        const savedTasks = localStorage.getItem('simpleTasks');
-        const savedNextId = localStorage.getItem('simpleNextId');
+        const savedTasks = localStorage.getItem('tasks');
+        const savedNextId = localStorage.getItem('nextId');
 
         if (savedTasks) {
             this.tasks = JSON.parse(savedTasks);
         }
 
-        if (savedNextId) {
-            this.nextId = parseInt(savedNextId, 10);
-        }
+        // Не загружается id следующей таски.
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new SimpleTodo();
+    new Todo();
 });
