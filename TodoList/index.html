@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простой Список Дел</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Мои Задачи</h1>
+        
+        <div class="add-task">
+            <input type="text" id="taskInput" placeholder="Введите задачу...">
+            <label class="urgent-checkbox">
+                <input type="checkbox" id="urgentCheckbox">
+                <span>Срочно!</span>
+            </label>
+            <button id="addTaskBtn">Добавить</button>
+        </div>
+        
+        <ul id="tasksList">
+            <!-- Задачи будут здесь -->
+        </ul>
+    </div>
+    
+    <script type="module" src="dist/index.js"></script>
+</body>
+</html>
