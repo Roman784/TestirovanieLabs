@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контактная форма</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Контактная форма</h2>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="firstName" class="required">Имя</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <div class="error-message" id="firstNameError">Поле обязательно для заполнения</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName" class="required">Фамилия</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <div class="error-message" id="lastNameError">Поле обязательно для заполнения</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="required">Email</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError">Введите корректный email адрес</div>
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate" class="required">Дата рождения</label>
+                <input type="date" id="birthdate" name="birthdate" >
+                <div class="error-message" id="birthdateError">Поле обязательно для заполнения</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (999) 999-99-99">
+                <div class="error-message" id="phoneError">Введите корректный номер телефона</div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreement" name="agreement" required>
+                    <label for="agreement" class="required">Я согласен с условиями обработки персональных данных</label>
+                </div>
+                <div class="error-message" id="agreementError">Необходимо принять условия</div>
+            </div>
+
+            <button type="submit" id="submitBtn">Отправить сообщение</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
